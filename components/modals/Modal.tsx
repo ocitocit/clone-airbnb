@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
+import Button from '../Button';
+import { IoMdClose } from 'react-icons/io'
 
 interface ModalProps {
   isOpen?: boolean;
@@ -12,7 +14,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryLabel?: string;
+  secondaryActionLabel?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -25,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLabel
+  secondaryActionLabel
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
@@ -104,7 +106,83 @@ const Modal: React.FC<ModalProps> = ({
               ${showModal ? 'translate-y-0' : 'translate-y-full'}
               ${showModal ? 'opacity-100' : 'opacity-0'}
             `}
-          ></div>
+          >
+            <div
+              className='
+              relative
+              flex
+              flex-col
+              translate
+              w-full
+              h-full
+              lg:h-auto
+              md:h-auto
+              border-0
+              rounded-lg
+              shadow-lg
+              bg-white
+              outline-none
+              focus:outline-none
+              '
+            >
+              {/* HEADER */}
+              <div
+                className='
+                relative
+                flex
+                justify-center
+                items-center
+                p-6
+                rounded-t
+                border-b-[1px]
+                '
+              >
+                <button
+                  onClick={handleClose}
+                  className='
+                  absolute
+                  p-1
+                  border-0
+                  transition
+                  left-9
+                  hover:opacity-70
+                  '
+                >
+                  <IoMdClose size={18} />
+                </button>
+                <div className='text-lg font-semibold'>
+                  {title}
+                </div>
+              </div>
+              {/* BODY */}
+              <div className='relative p-6 flex-auto'>
+                {body}
+              </div>
+              {/* FOOTER */}
+              <div className='flex flex-col gap-2 p-6'>
+                <div
+                  className='
+                  w-full
+                  flex
+                  flex-row
+                  items-center
+                  gap-4
+                  '
+                >
+                  <Button
+                    disabled={disabled}
+                    label={secondaryActionLabel}
+                    onClick={handleSubmit}
+                  />
+                  <Button
+                    disabled={disabled}
+                    label={actionLabel}
+                    onClick={handleSubmit}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>
