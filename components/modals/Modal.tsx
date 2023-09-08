@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 import Button from '../Button';
-import { IoMdClose } from 'react-icons/io'
+import { IoMdClose } from 'react-icons/io';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -108,7 +108,7 @@ const Modal: React.FC<ModalProps> = ({
             `}
           >
             <div
-              className='
+              className="
               relative
               flex
               flex-col
@@ -123,11 +123,11 @@ const Modal: React.FC<ModalProps> = ({
               bg-white
               outline-none
               focus:outline-none
-              '
+              "
             >
               {/* HEADER */}
               <div
-                className='
+                className="
                 relative
                 flex
                 justify-center
@@ -135,50 +135,45 @@ const Modal: React.FC<ModalProps> = ({
                 p-6
                 rounded-t
                 border-b-[1px]
-                '
+                "
               >
                 <button
                   onClick={handleClose}
-                  className='
+                  className="
                   absolute
                   p-1
                   border-0
                   transition
                   left-9
                   hover:opacity-70
-                  '
+                  "
                 >
                   <IoMdClose size={18} />
                 </button>
-                <div className='text-lg font-semibold'>
-                  {title}
-                </div>
+                <div className="text-lg font-semibold">{title}</div>
               </div>
               {/* BODY */}
-              <div className='relative p-6 flex-auto'>
-                {body}
-              </div>
+              <div className="relative p-6 flex-auto">{body}</div>
               {/* FOOTER */}
-              <div className='flex flex-col gap-2 p-6'>
+              <div className="flex flex-col gap-2 p-6">
                 <div
-                  className='
+                  className="
                   w-full
                   flex
                   flex-row
                   items-center
                   gap-4
-                  '
+                  "
                 >
-                  <Button
-                    disabled={disabled}
-                    label={secondaryActionLabel}
-                    onClick={handleSubmit}
-                  />
-                  <Button
-                    disabled={disabled}
-                    label={actionLabel}
-                    onClick={handleSubmit}
-                  />
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSubmit}
+                    />
+                  )}
+                  <Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
                 </div>
               </div>
             </div>

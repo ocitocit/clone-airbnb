@@ -14,12 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <Modal
-          actionLabel='Submit'
-          secondaryActionLabel='Cancel'
-          title='Modal'
-          isOpen
-        />
+        <Modal actionLabel="Submit" secondaryActionLabel="Cancel" title="Modal" isOpen />
         <NavBar />
         {children}
       </body>
