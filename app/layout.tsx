@@ -3,6 +3,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import Modal from '@/components/modals/Modal';
 import ClientOnly from '@/components/ClientOnly';
+import RegisterModal from '@/components/modals/RegisterModal';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -15,10 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ClientOnly>
-          <Modal actionLabel="Submit" secondaryActionLabel="Cancel" title="Modal" isOpen />
-          <NavBar />
-        </ClientOnly>
+        {/* <ClientOnly> */}
+        <RegisterModal />
+        <NavBar />
+        {/* </ClientOnly> */}
         {children}
       </body>
     </html>

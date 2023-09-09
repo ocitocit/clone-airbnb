@@ -1,52 +1,55 @@
-"use client";
+'use client';
 
-import axios from "axios";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc"
-import { useCallback, useState } from "react";
-import useRegisterModal from "@/hooks/useRegisterModal";
-import {
-  FieldValues,
-  SubmitHandler,
-  useForm
-} from "react-hook-form"
-import { log } from "console";
+import axios from 'axios';
+import { AiFillGithub } from 'react-icons/ai';
+import { FcGoogle } from 'react-icons/fc';
+import { useCallback, useState } from 'react';
+import useRegisterModal from '@/hooks/useRegisterModal';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import Modal from './Modal';
 
 const RegisterModal = () => {
-  const registerModal = useRegisterModal()
-  const [isLoading, setIsLoading] = useState(false)
+  const registerModal = useRegisterModal();
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: {
-      errors,
-    }
+    formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
       name: '',
       email: '',
       password: ''
     }
-  })
+  });
 
-  const onSubmit = SubmitHandler<FieldValues> = (data) => {
-    isLoading(true)
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    setIsLoading(true);
 
-    axios.post('/api/register', data)
+    axios
+      .post('/api/register', data)
       .then(() => {
-        registerModal.onClose()
+        registerModal.onClose();
       })
       .catch((error) => {
         console.log(error);
       })
       .finally(() => {
-        setIsLoading(false)
-      })
-  }
-  return (
-    <div>RegisterModal</div>
-  )
-}
+        setIsLoading(false);
+      });
+  };
 
-export default RegisterModal
+  return (
+    <Modal
+      disabled={isLoading}
+      isOpen={registerModal.isOpen}
+      title="Register"
+      actionLabel="Cotinue"
+      onClose={registerModal.onClose}
+      onSubmit={handleSubmit(onSubmit)}
+    />
+  );
+};
+
+export default RegisterModal;
