@@ -3,6 +3,7 @@ import { Nunito } from 'next/font/google';
 import './globals.css';
 import ClientOnly from '@/components/ClientOnly';
 import RegisterModal from '@/components/modals/RegisterModal';
+import ToasterProvider from '@/providers/ToasterProvider';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={nunito.className}>
         {/* <ClientOnly> */}
+        <ToasterProvider />
         <RegisterModal />
         <NavBar />
         {/* </ClientOnly> */}
