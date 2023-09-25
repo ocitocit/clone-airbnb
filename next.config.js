@@ -2,6 +2,7 @@
 const nextConfig = {
   images: {
     domains: [
+      "avatars.githubusercontent.com"
       // fill string url domain here as array
     ]
   }
