@@ -1,12 +1,12 @@
-import NavBar from '@/components/navbar/NavBar';
-import { Nunito } from 'next/font/google';
-import './globals.css';
 import ClientOnly from '@/components/ClientOnly';
-import RegisterModal from '@/components/modals/RegisterModal';
-import ToasterProvider from '@/providers/ToasterProvider';
 import LoginModal from '@/components/modals/LoginModal';
-import getCurrentUser from './actions/getCurrentUser';
+import RegisterModal from '@/components/modals/RegisterModal';
 import RentModal from '@/components/modals/RentModal';
+import NavBar from '@/components/navbar/NavBar';
+import ToasterProvider from '@/providers/ToasterProvider';
+import { Nunito } from 'next/font/google';
+import getCurrentUser from './actions/getCurrentUser';
+import './globals.css';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -16,7 +16,7 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const currentUser = await getCurrentUser()
+  const currentUser = await getCurrentUser();
 
   return (
     <html lang="en">

@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';
-import Button from '../Button';
 import { IoMdClose } from 'react-icons/io';
+import Button from '../Button';
 
 interface ModalProps {
   isOpen?: boolean;
@@ -70,59 +70,59 @@ const Modal: React.FC<ModalProps> = ({
     <>
       <div
         className="
-          justify-center
-          items-center
-          flex
-          overflow-x-hidden
-          overflow-y-auto
           fixed
           inset-0
           z-50
+          flex
+          items-center
+          justify-center
+          overflow-y-auto
+          overflow-x-hidden
+          bg-neutral-800/70
           outline-none
           focus:outline-none
-          bg-neutral-800/70
         "
       >
         <div
           className="
             relative
+            mx-auto
+            my-6
+            h-full
             w-full
+            md:h-auto
             md:w-3/4
+            lg:h-auto
             lg:w-3/6
             xl:w-2/5
-            my-6
-            mx-auto
-            h-full
-            lg:h-auto
-            md:h-auto
           "
         >
           {/* CONTENT */}
           <div
             className={`
               translate
-              duration-300
               h-full
+              duration-300
               ${showModal ? 'translate-y-0' : 'translate-y-full'}
               ${showModal ? 'opacity-100' : 'opacity-0'}
             `}
           >
             <div
               className="
+              translate
               relative
               flex
-              flex-col
-              translate
-              w-full
               h-full
-              lg:h-auto
-              md:h-auto
-              border-0
+              w-full
+              flex-col
               rounded-lg
-              shadow-lg
+              border-0
               bg-white
+              shadow-lg
               outline-none
               focus:outline-none
+              md:h-auto
+              lg:h-auto
               "
             >
               {/* HEADER */}
@@ -130,21 +130,21 @@ const Modal: React.FC<ModalProps> = ({
                 className="
                 relative
                 flex
-                justify-center
                 items-center
-                p-6
+                justify-center
                 rounded-t
                 border-b-[1px]
+                p-6
                 "
               >
                 <button
                   onClick={handleClose}
                   className="
                   absolute
-                  p-1
-                  border-0
-                  transition
                   left-9
+                  border-0
+                  p-1
+                  transition
                   hover:opacity-70
                   "
                 >
@@ -153,13 +153,13 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="text-lg font-semibold">{title}</div>
               </div>
               {/* BODY */}
-              <div className="relative p-6 flex-auto">{body}</div>
+              <div className="relative flex-auto p-6">{body}</div>
               {/* FOOTER */}
               <div className="flex flex-col gap-2 p-6">
                 <div
                   className="
-                  w-full
                   flex
+                  w-full
                   flex-row
                   items-center
                   gap-4
@@ -173,11 +173,7 @@ const Modal: React.FC<ModalProps> = ({
                       onClick={handleSubmit}
                     />
                   )}
-                  <Button
-                    disabled={disabled}
-                    label={actionLabel}
-                    onClick={handleSubmit}
-                  />
+                  <Button disabled={disabled} label={actionLabel} onClick={handleSubmit} />
                 </div>
                 {footer}
               </div>

@@ -81,12 +81,12 @@ const RentModal = () => {
       <Heading title="Which of these best descibes your place?" subTitle="Pick a category" />
       <div
         className="
-        grid
-        max-h-[50vh]
-        grid-cols-1
-        gap-3
-        overflow-y-auto
-        md:grid-cols-2
+          grid
+          max-h-[50vh]
+          grid-cols-1
+          gap-3
+          overflow-y-auto
+          md:grid-cols-2
         "
       >
         {categories.map((item) => (
