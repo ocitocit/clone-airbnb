@@ -1,11 +1,12 @@
-"use client"
+'use client';
 
-import { useMemo, useState } from "react"
-import useRentModal from "@/hooks/useRentModal"
-import Modal from "./Modal"
-import Heading from "../Heading"
-import { categories } from "../navbar/Categories"
-import CategoryInput from "../inputs/CategoryInput"
+import { useMemo, useState } from 'react';
+import useRentModal from '@/hooks/useRentModal';
+import Modal from './Modal';
+import Heading from '../Heading';
+import { categories } from '../navbar/Categories';
+import CategoryInput from '../inputs/CategoryInput';
+import { FieldValues, useForm } from 'react-hook-form';
 
 enum STEP {
   CATEGORY = 0,
@@ -17,54 +18,82 @@ enum STEP {
 }
 
 const RentModal = () => {
-  const rentModal = useRentModal()
-  const [step, setStep,] = useState(STEP.CATEGORY)
+  const rentModal = useRentModal();
+  const [step, setStep] = useState(STEP.CATEGORY);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors },
+    reset
+  } = useForm<FieldValues>({
+    defaultValues: {
+      category: '',
+      location: null,
+      guestCount: 1,
+      roomCount: 1,
+      bathroomCount: 1,
+      imageSrc: '',
+      price: 1,
+      title: '',
+      desciption: ''
+    }
+  });
+
+  const category = watch('category');
+
+  const setCustomValue = (id: string, value: any) => {
+    setValue(id, value, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true
+    });
+  };
 
   const onBack = () => {
-    setStep((value) => value - 1)
-  }
+    setStep((value) => value - 1);
+  };
 
   const onNext = () => {
-    setStep((value) => value + 1)
-  }
+    setStep((value) => value + 1);
+  };
 
   const actionLabel = useMemo(() => {
     if (step === STEP.PRICE) {
-      return 'Create'
+      return 'Create';
     }
 
-    return 'Next'
-  }, [step])
+    return 'Next';
+  }, [step]);
 
   const secondaryActionLabel = useMemo(() => {
     if (step === STEP.CATEGORY) {
-      return undefined
+      return undefined;
     }
 
-    return 'Back'
-  }, [step])
+    return 'Back';
+  }, [step]);
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
-      <Heading
-        title="Which of these best descibes your place?"
-        subTitle="Pick a category"
-      />
+      <Heading title="Which of these best descibes your place?" subTitle="Pick a category" />
       <div
         className="
         grid
-        grid-cols-1
-        md:grid-cols-2
-        gap-3
         max-h-[50vh]
+        grid-cols-1
+        gap-3
         overflow-y-auto
+        md:grid-cols-2
         "
       >
         {categories.map((item) => (
           <div className="col-span-1" key={item.label}>
             <CategoryInput
-              onClick={() => { }}
-              selected={false}
+              onClick={(category) => setCustomValue('category', category)}
+              selected={category === item.label}
               label={item.label}
               icon={item.icon}
             />
@@ -72,7 +101,7 @@ const RentModal = () => {
         ))}
       </div>
     </div>
-  )
+  );
 
   return (
     <Modal
@@ -85,7 +114,7 @@ const RentModal = () => {
       secondaryAction={step === STEP.CATEGORY ? undefined : onBack}
       body={bodyContent}
     />
-  )
-}
+  );
+};
 
-export default RentModal
+export default RentModal;
