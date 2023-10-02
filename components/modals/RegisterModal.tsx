@@ -16,7 +16,7 @@ import Modal from './Modal';
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
-  const loginModal = useLoginModal()
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -37,10 +37,12 @@ const RegisterModal = () => {
     axios
       .post('/api/register', data)
       .then(() => {
+        toast.success('Regitered!');
         registerModal.onClose();
+        loginModal.onOpen();
       })
       .catch((error) => {
-        toast.error("Something went wrong.")
+        toast.error(error);
       })
       .finally(() => {
         setIsLoading(false);
@@ -48,94 +50,88 @@ const RegisterModal = () => {
   };
 
   const toggle = useCallback(() => {
-    registerModal.onClose()
-    loginModal.onOpen()
-  }, [registerModal, loginModal])
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [registerModal, loginModal]);
 
   const bodyContent = (
-    <div className='flex flex-col gap-4'>
-      <Heading
-        title='Welocome To Airbnb'
-        subTitle='Create an account!'
-        center
-      />
+    <div className="flex flex-col gap-4">
+      <Heading title="Welocome To Airbnb" subTitle="Create an account!" center />
       <Input
-        id='name'
-        label='Name'
+        id="name"
+        label="Name"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id='email'
-        label='Email'
+        id="email"
+        label="Email"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
       <Input
-        id='password'
-        label='Password'
-        type='password'
+        id="password"
+        label="Password"
+        type="password"
         disabled={isLoading}
         register={register}
         errors={errors}
         required
       />
     </div>
-  )
+  );
 
   const footerContent = (
-    <div className='flex flex-col gap-4 mt-3'>
+    <div className="mt-3 flex flex-col gap-4">
       <hr />
       <Button
         outline
-        label='Continue With Google'
+        label="Continue With Google"
         icon={FcGoogle}
         onClick={() => signIn('google')}
       />
       <Button
         outline
-        label='Continue With Github'
+        label="Continue With Github"
         icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
       <div
-        className='
-          text-neutral-500
-          text-center
+        className="
           mt-4
+          text-center
           font-light
-        '
+          text-neutral-500
+        "
       >
         <div
-          className='
+          className="
             flex
             flex-row
-            justify-center
             items-center
+            justify-center
             gap-2
-          '
+          "
         >
-          <div>
-            Already have an account?
-          </div>
+          <div>Already have an account?</div>
           <div
             onClick={toggle}
-            className='
-              text-neutral-800
+            className="
               cursor-pointer
+              text-neutral-800
               hover:underline
-            '
+            "
           >
             Log in
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 
   return (
     <Modal
