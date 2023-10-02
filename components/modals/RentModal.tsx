@@ -55,11 +55,11 @@ const RentModal = () => {
   };
 
   const onBack = () => {
-    setStep(step - 1);
+    setStep((value) => value - 1);
   };
 
   const onNext = () => {
-    setStep(step + 1);
+    setStep((value) => value + 1);
   };
 
   const actionLabel = useMemo(() => {
@@ -107,17 +107,11 @@ const RentModal = () => {
 
   if (step === STEP.LOCATION) {
     bodyContent = (
-      <div className='flex flex-col gap-8'>
-        <Heading
-          title='Where your place located?'
-          subTitle='Help guest find you!'
-        />
-        <CountrySelect
-          value={location}
-          onChange={(value) => setCustomValue('location', value)}
-        />
+      <div className="flex flex-col gap-8">
+        <Heading title="Where your place located?" subTitle="Help guest find you!" />
+        <CountrySelect value={location} onChange={(value) => setCustomValue('location', value)} />
       </div>
-    )
+    );
   }
 
   return (
