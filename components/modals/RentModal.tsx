@@ -55,11 +55,11 @@ const RentModal = () => {
   };
 
   const onBack = () => {
-    setStep((value) => value - 1);
+    setStep(step - 1);
   };
 
   const onNext = () => {
-    setStep((value) => value + 1);
+    setStep(step + 1);
   };
 
   const actionLabel = useMemo(() => {
