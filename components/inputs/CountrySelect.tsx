@@ -1,26 +1,23 @@
-'use client'
+'use client';
 
-import useCountries from '@/hooks/useCountries'
-import Select from 'react-select'
+import useCountries from '@/hooks/useCountries';
+import Select from 'react-select';
 
 export type CountrySelectValue = {
-  value: string
-  label: string
-  latlng: number[]
-  region: string
-  flag: string
-}
+  value: string;
+  label: string;
+  latlng: number[];
+  region: string;
+  flag: string;
+};
 
 interface CountrySelectProps {
-  value?: CountrySelectValue
-  onChange: (value: CountrySelectValue) => void
+  value?: CountrySelectValue;
+  onChange: (value: CountrySelectValue) => void;
 }
 
-const CountrySelect: React.FC<CountrySelectProps> = ({
-  value,
-  onChange
-}) => {
-  const { getAll } = useCountries()
+const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
+  const { getAll } = useCountries();
 
   return (
     <div>
@@ -31,10 +28,10 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
         value={value}
         onChange={(value) => onChange(value as CountrySelectValue)}
         formatOptionLabel={(option: any) => (
-          <div className='flex flex-row items-center gap-3'>
+          <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
             <div>
-              {option.label}, <span className='text-neutral-500 ml-1'>{option.region}</span>
+              {option.label}, <span className="ml-1 text-neutral-500">{option.region}</span>
             </div>
           </div>
         )}
@@ -54,7 +51,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
         })}
       />
     </div>
-  )
-}
+  );
+};
 
-export default CountrySelect
+export default CountrySelect;
