@@ -1,4 +1,3 @@
-import ClientOnly from '@/components/ClientOnly';
 import LoginModal from '@/components/modals/LoginModal';
 import RegisterModal from '@/components/modals/RegisterModal';
 import RentModal from '@/components/modals/RentModal';
@@ -21,13 +20,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en">
       <body className={nunito.className}>
-        {/* <ClientOnly> */}
         <ToasterProvider />
         <RentModal />
         <LoginModal />
         <RegisterModal />
         <NavBar currentUser={currentUser} />
-        {/* </ClientOnly> */}
         {children}
       </body>
     </html>
