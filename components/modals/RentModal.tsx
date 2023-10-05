@@ -11,6 +11,7 @@ import CountrySelect from '../inputs/CountrySelect';
 import dynamic from 'next/dynamic';
 import Counter from '../inputs/Counter';
 import ImageUpload from '../inputs/ImageUpload';
+import Input from '../inputs/Input';
 
 enum STEPS {
   CATEGORY = 0,
@@ -24,6 +25,7 @@ enum STEPS {
 const RentModal = () => {
   const rentModal = useRentModal();
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
@@ -169,6 +171,52 @@ const RentModal = () => {
           subTitle="Show guest that your place looks like!"
         />
         <ImageUpload value={imageSrc} onChange={(value) => setCustomValue('imageSrc', value)} />
+      </div>
+    );
+  }
+
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="How would you describe your place?"
+          subTitle="Short and sweet works best!"
+        />
+        <Input
+          id="title"
+          label="Title"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    );
+  }
+
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading title="Now, set your price" subTitle="How much do you charge per night?" />
+        <Input
+          id="price"
+          label="Price"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
       </div>
     );
   }
