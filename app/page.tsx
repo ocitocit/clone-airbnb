@@ -1,9 +1,12 @@
 import Container from "@/components/Container";
 import EmptyState from "@/components/EmptyState";
 import getListings from "./actions/getListings";
+import ListingCard from "@/components/listings/ListingCard";
+import getCurrentUser from "./actions/getCurrentUser";
 
 export default async function Home() {
   const listings = await getListings()
+  const currentUser = await getCurrentUser()
 
   if (listings.length === 0) {
     return (
@@ -24,7 +27,15 @@ export default async function Home() {
           2xl:grid-cols-6
         "
       >
-        <div>my future listings</div>
+        {listings.map((listing: any) => {
+          return (
+            <ListingCard
+              key={listing.id}
+              data={listing}
+              currentUser={currentUser}
+            />
+          )
+        })}
       </div>
     </Container>
   )
