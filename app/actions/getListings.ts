@@ -1,4 +1,4 @@
-import prisma from '@/libs/prismadb'
+import prisma from '@/libs/prismadb';
 
 export default async function getListings() {
   try {
@@ -6,10 +6,10 @@ export default async function getListings() {
       orderBy: {
         createdAt: 'desc'
       }
-    })
+    });
 
-    return listings
+    return listings;
   } catch (error: any) {
-    throw new Error(error)
+    throw new Error(error);
   }
 }
