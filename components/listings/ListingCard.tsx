@@ -7,6 +7,7 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
+import HeartButton from '../HeartButton';
 
 interface ListingCardProps {
   data: Listing;
@@ -91,6 +92,9 @@ const ListingCard: React.FC<ListingCardProps> = ({
               group-hover:scale-110
             "
           />
+          <div className="absolute right-3 top-3">
+            <HeartButton listingId={data.id} currentUser={currentUser} />
+          </div>
         </div>
       </div>
     </div>
