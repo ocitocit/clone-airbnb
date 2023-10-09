@@ -35,10 +35,10 @@ const ListingClient: React.FC<ListingClientProps> = ({
   const loginModal = useLoginModal();
   const router = useRouter();
 
-  const disableDates = useMemo(() => {
+  const disabledDates = useMemo(() => {
     let dates: Date[] = [];
 
-    reservations.forEach((reservation: any) => {
+    reservations.forEach((reservation) => {
       const range = eachDayOfInterval({
         start: new Date(reservation.startDate),
         end: new Date(reservation.endDate)
@@ -137,7 +137,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             >
               <ListingReservation
                 disabled={isLoading}
-                disableDates={disableDates}
+                disableDates={disabledDates}
                 price={listing.price}
                 totalPrice={totalPrice}
                 dateRange={dateRange}
