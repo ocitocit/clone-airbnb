@@ -137,7 +137,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
             >
               <ListingReservation
                 disabled={isLoading}
-                disableDates={disabledDates}
+                disabledDates={disabledDates}
                 price={listing.price}
                 totalPrice={totalPrice}
                 dateRange={dateRange}
