@@ -17,7 +17,7 @@ import { toast } from 'react-hot-toast';
 const initialDateRange = {
   startDate: new Date(),
   endDate: new Date(),
-  key: 'selected'
+  key: 'selection'
 };
 
 interface ListingClientProps {
