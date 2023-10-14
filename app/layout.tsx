@@ -4,7 +4,7 @@ import RentModal from '@/components/modals/RentModal';
 import NavBar from '@/components/navbar/NavBar';
 import ToasterProvider from '@/providers/ToasterProvider';
 import { Nunito } from 'next/font/google';
-import getCurrentUser from './actions/getCurrentUser';
+import getCurrentUser from '@/actions/getCurrentUser';
 import './globals.css';
 
 const nunito = Nunito({ subsets: ['latin'] });
@@ -25,9 +25,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <LoginModal />
         <RegisterModal />
         <NavBar currentUser={currentUser} />
-        <div className='pb-20 pt-28'>
-          {children}
-        </div>
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   );
