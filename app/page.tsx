@@ -27,7 +27,13 @@ export default async function Home() {
         "
       >
         {listings.map((listing: any) => {
-          return <ListingCard key={listing.id} data={listing} currentUser={currentUser} />;
+          return (
+            <ListingCard
+              key={listing.id}
+              data={listing}
+              currentUser={currentUser}
+            />
+          );
         })}
       </div>
     </Container>

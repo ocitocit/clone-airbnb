@@ -14,7 +14,10 @@ interface TripClientProps {
   currentUser?: SafeUser | null;
 }
 
-const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) => {
+const TripsClient: React.FC<TripClientProps> = ({
+  reservations,
+  currentUser
+}) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');
 
@@ -40,7 +43,10 @@ const TripsClient: React.FC<TripClientProps> = ({ reservations, currentUser }) =
 
   return (
     <Container>
-      <Heading title="Trips" subTitle="Where you've been and where you're going" />
+      <Heading
+        title="Trips"
+        subTitle="Where you've been and where you're going"
+      />
       <div
         className="
           mt-10

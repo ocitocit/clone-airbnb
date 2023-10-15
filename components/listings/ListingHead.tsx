@@ -26,7 +26,10 @@ const ListingHead: React.FC<ListingHeadProps> = ({
   const location = getByValue(locationValue);
   return (
     <>
-      <Heading title={title} subTitle={`${location?.region}, ${location?.label}`} />
+      <Heading
+        title={title}
+        subTitle={`${location?.region}, ${location?.label}`}
+      />
       <div
         className="
         relative
@@ -36,7 +39,12 @@ const ListingHead: React.FC<ListingHeadProps> = ({
         rounded-xl
         "
       >
-        <Image alt="Image" src={imageSrc} fill className="w-full object-cover" />
+        <Image
+          alt="Image"
+          src={imageSrc}
+          fill
+          className="w-full object-cover"
+        />
         <div className="absolute right-5 top-5">
           <HeartButton listingId={id} currentUser={currentUser} />
         </div>

@@ -14,7 +14,10 @@ interface ReservationsClientProps {
   currentUser?: SafeUser | null;
 }
 
-const ReservationsClient: React.FC<ReservationsClientProps> = ({ reservations, currentUser }) => {
+const ReservationsClient: React.FC<ReservationsClientProps> = ({
+  reservations,
+  currentUser
+}) => {
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');
 
@@ -40,7 +43,10 @@ const ReservationsClient: React.FC<ReservationsClientProps> = ({ reservations, c
 
   return (
     <Container>
-      <Heading title="Reservations" subTitle="Bookings on your properties" />
+      <Heading
+        title="Reservations"
+        subTitle="Bookings on your properties"
+      />
       <div
         className="
           mt-10

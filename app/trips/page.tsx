@@ -16,11 +16,16 @@ const TripsPage = async () => {
 
   if (reservations.length === 0) {
     return (
-      <EmptyState title="No trips found" subTitle="Looks like you havent reserved any trips" />
+      <EmptyState
+        title="No trips found"
+        subTitle="Looks like you havent reserved any trips"
+      />
     );
   }
 
-  return <TripsClient reservations={reservations} currentUser={currentUser} />;
+  return (
+    <TripsClient reservations={reservations} currentUser={currentUser} />
+  );
 };
 
 export default TripsPage;

@@ -31,7 +31,11 @@ const EmptyState: React.FC<EmptyStateProps> = ({
       <Heading center title={title} subTitle={subTitle} />
       <div className="mt-4 w-48">
         {showReset && (
-          <Button outline label="Remove all filters" onClick={() => router.push('/')} />
+          <Button
+            outline
+            label="Remove all filters"
+            onClick={() => router.push('/')}
+          />
         )}
       </div>
     </div>

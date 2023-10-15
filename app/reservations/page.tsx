@@ -23,7 +23,12 @@ const ReservationsPage = async () => {
     );
   }
 
-  return <ReservationsClient reservations={reservations} currentUser={currentUser} />;
+  return (
+    <ReservationsClient
+      reservations={reservations}
+      currentUser={currentUser}
+    />
+  );
 };
 
 export default ReservationsPage;
