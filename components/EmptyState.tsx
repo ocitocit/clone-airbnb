@@ -1,13 +1,13 @@
-'use client'
-import { useRouter } from 'next/navigation'
-import React from 'react'
-import Heading from './Heading'
-import Button from './Button'
+'use client';
+import { useRouter } from 'next/navigation';
+import React from 'react';
+import Heading from './Heading';
+import Button from './Button';
 
 interface EmptyStateProps {
-  title?: string
-  subTitle?: string
-  showReset?: boolean
+  title?: string;
+  subTitle?: string;
+  showReset?: boolean;
 }
 
 const EmptyState: React.FC<EmptyStateProps> = ({
@@ -15,35 +15,27 @@ const EmptyState: React.FC<EmptyStateProps> = ({
   subTitle = 'Try changing or removing  somw of your filters',
   showReset
 }) => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div
-      className='
-      h-[60vh]
-      flex
-      flex-col
-      justify-center
-      items-center
-      gap-2
-      '
+      className="
+        flex
+        h-[60vh]
+        flex-col
+        items-center
+        justify-center
+        gap-2
+      "
     >
-      <Heading
-        center
-        title={title}
-        subTitle={subTitle}
-      />
-      <div className="w-48 mt-4">
+      <Heading center title={title} subTitle={subTitle} />
+      <div className="mt-4 w-48">
         {showReset && (
-          <Button
-            outline
-            label='Remove all filters'
-            onClick={() => router.push('/')}
-          />
+          <Button outline label="Remove all filters" onClick={() => router.push('/')} />
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default EmptyState;
