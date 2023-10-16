@@ -6,6 +6,7 @@ import ToasterProvider from '@/providers/ToasterProvider';
 import { Nunito } from 'next/font/google';
 import getCurrentUser from '@/actions/getCurrentUser';
 import './globals.css';
+import SearchModal from '@/components/modals/SearchModal';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
@@ -21,6 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en">
       <body className={nunito.className}>
         <ToasterProvider />
+        <SearchModal />
         <RentModal />
         <LoginModal />
         <RegisterModal />
