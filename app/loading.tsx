@@ -1,5 +1,9 @@
+import Loader from "@/components/Loader";
+
 const Loading = () => {
-  <div className="bg-red-950">Loading...</div>
+  return (
+    <Loader />
+  )
 }
 
 export default Loading;
