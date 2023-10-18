@@ -32,7 +32,28 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     }
 
     rentModal.onOpen();
-  }, [currentUser, loginModal, rentModal]);
+    toggleOpen()
+  }, [currentUser, loginModal, rentModal, toggleOpen]);
+
+  const routeTo = (value: string) => {
+    router.push(value);
+    toggleOpen()
+  }
+
+  const logout = () => {
+    signOut()
+    toggleOpen()
+  }
+
+  const login = () => {
+    loginModal.onOpen()
+    toggleOpen()
+  }
+
+  const signup = () => {
+    registerModal.onOpen()
+    toggleOpen()
+  }
 
   return (
     <div className="relative">
@@ -96,18 +117,18 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="flex cursor-pointer flex-col">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => router.push('/trips')} label="My trips" />
-                <MenuItem onClick={() => router.push('/favorites')} label="My favorites" />
-                <MenuItem onClick={() => router.push('/reservations')} label="My reservations" />
-                <MenuItem onClick={() => router.push('/properties')} label="My properties" />
+                <MenuItem onClick={() => routeTo('/trips')} label="My trips" />
+                <MenuItem onClick={() => routeTo('/favorites')} label="My favorites" />
+                <MenuItem onClick={() => routeTo('/reservations')} label="My reservations" />
+                <MenuItem onClick={() => routeTo('/properties')} label="My properties" />
                 <MenuItem onClick={onRent} label="Airbnb my home" />
                 <hr />
-                <MenuItem onClick={() => signOut()} label="Logout" />
+                <MenuItem onClick={() => logout()} label="Logout" />
               </>
             ) : (
               <>
-                <MenuItem onClick={loginModal.onOpen} label="Login" />
-                <MenuItem onClick={registerModal.onOpen} label="Sign Up" />
+                <MenuItem onClick={login} label="Login" />
+                <MenuItem onClick={signup} label="Sign Up" />
               </>
             )}
           </div>
