@@ -82,7 +82,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
         >
           <Image
             fill
-            alt="Listing"
+            sizes="100%"
+            alt={data.title}
             src={data.imageSrc}
             className="
               h-full
@@ -99,13 +100,20 @@ const ListingCard: React.FC<ListingCardProps> = ({
         <div className="text-lg font-semibold">
           {location?.region}, {location?.label}
         </div>
-        <div className="font-light text-neutral-500">{reservationDate || data.category}</div>
+        <div className="font-light text-neutral-500">
+          {reservationDate || data.category}
+        </div>
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">$ {price}</div>
           {!reservation && <div className="font-light">night</div>}
         </div>
         {onAction && actionLabel && (
-          <Button disabled={disabled} small label={actionLabel} onClick={handleCancel} />
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+          />
         )}
       </div>
     </div>
